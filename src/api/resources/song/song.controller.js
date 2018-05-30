@@ -64,4 +64,30 @@ export default {
       return res.status(500).send(err);
     }
   },
+  async update(req, res) {
+    try {
+      const { id } = req.params;
+      const schema = Joi.object().keys({
+        title: Joi.string().optional(),
+        url: Joi.string().optional(),
+        rating: Joi.number()
+          .integer()
+          .min(0)
+          .max(5)
+          .optional(),
+      });
+      const { value, error } = Joi.validate(req.body, schema);
+      if (error && error.details) {
+        return res.status(400).json(error);
+      }
+      const song = await Song.findOneAndUpdate({ _id: id }, value, { new: true });
+      if (!song) {
+        return res.status(404).json({ err: 'could not find song' });
+      }
+      return res.json(song);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).send(err);
+    }
+  },
 };
