@@ -1,4 +1,20 @@
 {
     "title" : "Music API Documentation",
-    "description" : "MUSIC API course for egghead"
+    "description" : "MUSIC API course for egghead",
+    "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      },
+      "version": "1.0.0",
+      "host": "localhost:3000",
+      "basePath": "/api",
+      "tags": [
+        {
+          "name": "Songs",
+          "description": "API for Songs Endpoints"
+        }
+      ],
+      "schemes": ["http"],
+      "consumes": ["application/json"],
+      "produces": ["application/json"]
 }
