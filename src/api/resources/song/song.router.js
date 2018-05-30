@@ -6,3 +6,5 @@ songRouter
   .route('/')
   .post(songController.create)
   .get(songController.findAll);
+
+songRouter.route('/:id').get(songController.findOne);
