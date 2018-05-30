@@ -26,7 +26,12 @@ export default {
   },
   async findAll(req, res) {
     try {
-      const songs = await Song.find();
+      const { page, perPage } = req.query;
+      const options = {
+        page: parseInt(page, 10),
+        limit: parseInt(perPage, 10),
+      };
+      const songs = await Song.paginate({}, options);
       return res.json(songs);
     } catch (err) {
       console.error(err);
