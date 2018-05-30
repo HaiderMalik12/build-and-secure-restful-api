@@ -1,9 +1,11 @@
 import express from 'express';
 import logger from 'morgan';
+import { connect } from './config/db';
 
 const app = express();
 const PORT = 3000;
 
+connect();
 app.use(logger('dev'));
 
 app.get('/', (req, res) => res.json({ msg: 'Welcome to Build and Secure Restful APIS' }));
