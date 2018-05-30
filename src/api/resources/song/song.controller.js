@@ -28,8 +28,8 @@ export default {
     try {
       const { page, perPage } = req.query;
       const options = {
-        page: parseInt(page, 10),
-        limit: parseInt(perPage, 10),
+        page: parseInt(page, 10) || 1,
+        limit: parseInt(perPage, 10) || 10,
       };
       const songs = await Song.paginate({}, options);
       return res.json(songs);
