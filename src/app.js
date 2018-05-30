@@ -1,6 +1,7 @@
 import express from 'express';
 import logger from 'morgan';
 import { connect } from './config/db';
+import { restRouter } from './api';
 
 const app = express();
 const PORT = 3000;
@@ -8,7 +9,7 @@ const PORT = 3000;
 connect();
 app.use(logger('dev'));
 
-app.get('/', (req, res) => res.json({ msg: 'Welcome to Build and Secure Restful APIS' }));
+app.use('/api', restRouter);
 app.use((req, res, next) => {
   const error = new Error('Not found');
   error.message = 'Invalid route';
