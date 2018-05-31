@@ -90,7 +90,14 @@
                "schema" : {
                  "$ref" : "#definitions/Song"
                }
-             }
+             },
+             {
+              "name": "authorization",
+              "description": "Access token to authorize the user",
+              "in": "header",
+              "type": "string",
+              "required": true
+            }
            ],
            "produces" : ["application/json"],
            "responses":{
@@ -118,6 +125,13 @@
               "type": "integer",
               "description": "Define the limiet for the records i.e 10",
               "in": "query"
+            },
+            {
+              "name": "authorization",
+              "description": "Access token to authorize the user",
+              "in": "header",
+              "type": "string",
+              "required": true
             }
           ],
           "produces" : ["application/json"],
@@ -140,7 +154,14 @@
                 "description": "id of the song",
                 "type": "string"
 
-             }
+             },
+             {
+              "name": "authorization",
+              "description": "Access token to authorize the user",
+              "in": "header",
+              "type": "string",
+              "required": true
+            }
           ],
           "get":{
             "tags": ["Songs"],
