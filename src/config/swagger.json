@@ -43,7 +43,35 @@
                }
              }
            }
-         }
+         },
+         "get":{
+          "tags": ["Songs"],
+          "summary": "API Endpoint for find all Song",
+          "description" : "Find all Songs from the database",
+          "parameters":[
+            {
+              "name": "page",
+              "type": "integer",
+              "description": "Define the page index for the records",
+              "in": "query"
+            },
+            {
+              "name": "perPage",
+              "type": "integer",
+              "description": "Define the limiet for the records i.e 10",
+              "in": "query"
+            }
+          ],
+          "produces" : ["application/json"],
+          "responses":{
+            "200":{
+              "description" : "All the songs",
+              "schema": {
+               "$ref" : "#definitions/Songs"
+              }
+            }
+          }
+        }
         }
       },
       "definitions":{
@@ -62,6 +90,26 @@
             "rating": {
               "type" : "integer",
               "format" :"Int32"
+            }
+          }
+        },
+        "Songs":{
+          "properties":{
+            "docs": {
+              "type" : "array",
+              "$ref": "#definitions/Song"
+            },
+            "total": {
+              "type" : "integer"
+            },
+            "pages": {
+              "type" : "integer"
+            },
+            "limit": {
+              "type" : "integer"
+            },
+            "page":{
+              "type": "integer"
             }
           }
         }
