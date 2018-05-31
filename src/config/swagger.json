@@ -242,6 +242,9 @@
             },
             "password": {
               "type" : "string"
+            },
+            "role": {
+              "type": "integer"
             }
           }
         },
