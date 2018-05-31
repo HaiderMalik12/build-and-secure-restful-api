@@ -49,6 +49,33 @@
             }
           }
         },
+        "/users/login":{
+          "post":{
+            "tags": ["Users"],
+            "summary": "API Endpoint to login his/her account",
+            "description" : "Login user",
+            "parameters":[
+              {
+                "name": "user",
+                "description": "User params to login",
+                "in": "body",
+                "required": "true",
+                "schema" : {
+                  "$ref" : "#definitions/UserLogin"
+                }
+              }
+            ],
+            "produces" : ["application/json"],
+            "responses":{
+              "200":{
+                "description" : "New user has loggedIn",
+                "schema": {
+                 "$ref" : "#definitions/UserLoginRsp"
+                }
+              }
+            }
+          }
+        },
         "/songs":{
          "post":{
            "tags": ["Songs"],
@@ -193,6 +220,24 @@
               "type" : "string"
             },
             "password": {
+              "type" : "string"
+            }
+          }
+        },
+        "UserLogin":{
+          "required": ["email", "password"],
+          "properties":{
+            "email": {
+              "type" : "string"
+            },
+            "password": {
+              "type" : "string"
+            }
+          }
+        },
+        "UserLoginRsp":{
+          "properties":{
+            "token": {
               "type" : "string"
             }
           }
