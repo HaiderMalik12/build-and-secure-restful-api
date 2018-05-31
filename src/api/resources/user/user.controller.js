@@ -44,4 +44,7 @@ export default {
       return res.status(500).send(err);
     }
   },
+  authenticate(req, res) {
+    return res.json(req.user);
+  },
 };
