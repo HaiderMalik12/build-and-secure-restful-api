@@ -17,6 +17,35 @@
       "schemes": ["http"],
       "consumes": ["application/json"],
       "produces": ["application/json"],
+      "paths" :{
+        "/songs":{
+         "post":{
+           "tags": ["Songs"],
+           "summary": "API Endpoint for create Song",
+           "description" : "Create new Song in database",
+           "parameters":[
+             {
+               "name": "song",
+               "description": "Song params to create new song",
+               "in": "body",
+               "required": "true",
+               "schema" : {
+                 "$ref" : "#definitions/Song"
+               }
+             }
+           ],
+           "produces" : ["application/json"],
+           "responses":{
+             "200":{
+               "description" : "New Song Created",
+               "schema": {
+                "$ref" : "#definitions/Song"
+               }
+             }
+           }
+         }
+        }
+      },
       "definitions":{
         "Song":{
           "required": ["title","url"],
