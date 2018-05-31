@@ -1,5 +1,6 @@
 import userService from './user.service';
 import User from './user.model';
+import jwt from '../../helpers/jwt';
 
 export default {
   async signup(req, res) {
@@ -36,7 +37,8 @@ export default {
       if (!authenticted) {
         return res.status(401).json({ err: 'unauthorized' });
       }
-      return res.json(user); // send jwt token
+      const token = jwt.issue({ id: user._id }, '1d');
+      return res.json({ token });
     } catch (err) {
       console.error(err);
       return res.status(500).send(err);
