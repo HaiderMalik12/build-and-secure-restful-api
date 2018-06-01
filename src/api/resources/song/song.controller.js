@@ -17,7 +17,7 @@ export default {
       if (error && error.details) {
         return res.status(400).json(error);
       }
-      const song = await Song.create(value);
+      const song = await Song.create(Object.assign({}, value, { artist: req.user._id }));
       return res.json(song);
     } catch (err) {
       console.error(err);
