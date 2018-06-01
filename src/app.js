@@ -8,7 +8,7 @@ import swaggerDocument from './config/swagger.json';
 import { configJWTStrategy } from './api/middlewares/passport-jwt';
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 connect();
 app.use(express.json());
