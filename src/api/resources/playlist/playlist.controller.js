@@ -15,4 +15,15 @@ export default {
       return res.status(500).send(err);
     }
   },
+  async findAll(req, res) {
+    try {
+      const playlists = await Playlist.find()
+        .populate('songs')
+        .populate('user', 'firstName lastName');
+      return res.json(playlists);
+    } catch (err) {
+      console.error(err);
+      return res.status(500).send(err);
+    }
+  },
 };
