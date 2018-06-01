@@ -4,9 +4,10 @@
   "description": "A Music Restful API for Egghead Course: Secure Restful API with Nodejs, and Mongoose",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/app.js --exec babel-node --presets env",
+    "dev": "nodemon src/app.js --exec babel-node --presets env",
     "build": "babel src -d dist --source-maps inline --copy-files",
-    "serve": "node dist/app.js"
+    "heroku-postbuild": "npm install",
+    "start": "babel-node src/app.js"
   },
   "keywords": [],
   "author": "",
