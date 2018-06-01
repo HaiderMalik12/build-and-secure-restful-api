@@ -18,7 +18,7 @@ app.use(passport.initialize()); // req.user
 configJWTStrategy();
 app.use('/api', restRouter);
 app.use(
-  '/api-docs',
+  '/',
   swaggerUi.serve,
   swaggerUi.setup(swaggerDocument, {
     explorer: true,
